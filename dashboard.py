@@ -631,7 +631,7 @@ HTML_TEMPLATE = '''
                 <div class="header-icon">🏥</div>
                 <div>
                     <h1>DIAGNÓSTICO INTELIGENTE</h1>
-                    <p class="header-subtitle">Sistema de Clasificación Médica Avanzado</p>
+                    <p class="header-subtitle">12 de Mayo - Sistema de Clasificación Médica</p>
                 </div>
             </div>
         </div>
@@ -760,7 +760,7 @@ HTML_TEMPLATE = '''
         <!-- Footer -->
         <div class="footer">
             <p>🤖 Powered by Random Forest | Flask + Chart.js | Sistema de Diagnóstico Inteligente</p>
-            <p style="margin-top: 12px; font-size: 0.8rem;">© 2024 Machine Learning Dashboard</p>
+            <p style="margin-top: 12px; font-size: 0.8rem;">© 2026 Machine Learning Dashboard</p>
         </div>
     </div>
 
