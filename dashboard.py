@@ -561,6 +561,9 @@ HTML_TEMPLATE = '''
             <button class="btn btn-example btn-ben" onclick="cargarEjemplo(EXAMPLE_BENIGN)">
                 Ejemplo Benigno
             </button>
+            <button class="btn btn-example" onclick="cargarDatosAleatorios()" style="background: rgba(255,215,0,.15); color: #ffd700; border: 1px solid rgba(255,215,0,.4);">
+                🎲 Datos Aleatorios
+            </button>
             <button class="btn btn-clear" onclick="limpiarCampos()">
                 Limpiar Campos
             </button>
@@ -656,6 +659,52 @@ function getInputs() {
         document.querySelector(`input[data-col="${col}"]`)
     );
 }
+
+function cargarDatosAleatorios() {
+    // Generar valores aleatorios dentro de rangos realistas basados en ejemplos
+    // Rango: valor mínimo y máximo de los ejemplos + 20% de margen
+    const rangos = {
+        radius_mean: [8, 30],
+        texture_mean: [8, 25],
+        perimeter_mean: [50, 190],
+        area_mean: [200, 2100],
+        smoothness_mean: [0.05, 0.15],
+        compactness_mean: [0.03, 0.35],
+        concavity_mean: [0, 0.43],
+        concave_points_mean: [0, 0.3],
+        symmetry_mean: [0.1, 0.3],
+        fractal_dimension_mean: [0.05, 0.1],
+        radius_se: [0.2, 2.9],
+        texture_se: [0.3, 4.8],
+        perimeter_se: [1, 21],
+        area_se: [6, 542],
+        smoothness_se: [0.001, 0.03],
+        compactness_se: [0.002, 0.14],
+        concavity_se: [0, 0.4],
+        concave_points_se: [0, 0.05],
+        symmetry_se: [0.008, 0.08],
+        fractal_dimension_se: [0.001, 0.03],
+        radius_worst: [7.5, 36],
+        texture_worst: [12, 49],
+        perimeter_worst: [50, 251],
+        area_worst: [185, 4254],
+        smoothness_worst: [0.07, 0.22],
+        compactness_worst: [0.03, 1.1],
+        concavity_worst: [0, 1.25],
+        concave_points_worst: [0, 0.29],
+        symmetry_worst: [0.13, 0.66],
+        fractal_dimension_worst: [0.055, 0.21]
+    };
+
+    const valores = FEATURE_COLS.map(col => {
+        const [min, max] = rangos[col] || [0, 1];
+        // Generar número aleatorio entre min y max
+        return Math.random() * (max - min) + min;
+    });
+
+    cargarEjemplo(valores);
+}
+
 
 function cargarEjemplo(valores) {
     getInputs().forEach((inp, i) => {
